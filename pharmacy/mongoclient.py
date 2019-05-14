@@ -18,7 +18,7 @@ class MongoClient():
     def insert_one(self, data):
         return self.coll.insert_one(data)
 
-    ##新增多条记录
+    ##查询多条记录
     def find_many(self, **query):
         return self.coll.find(query)
 
@@ -31,5 +31,8 @@ class MongoClient():
     def delete_one(self,query):
         return self.coll.delete_one(query)
 #
-# d = MongoClient()
-# print(d.find_many().count())
+# client = pymongo.MongoClient(host=settings['MONGO_HOST'], port=settings['MONGO_PORT'])
+# db = client[settings['MONGO_DB']]
+# coll = db[settings['MONGO_COLL']]
+# myquery = { "shopName": "康爱多" }
+# coll.delete_many(myquery)

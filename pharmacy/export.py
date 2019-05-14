@@ -10,7 +10,7 @@ def run(outputpath):
     list = []
     for d in data:
         v = {'商品名称': d['goodsName'], '通用名称': d['genericName'],
-             "厂家名称": d['manufacturer'], "规格": d['specifications'], "批准文号": d['approvalNumber']
+             "厂家名称": d['manufacturer'] if 'manufacturer' in d else '', "规格": d['specifications'], "批准文号": d['approvalNumber']
             , "实际价格": d['actualPrice'], "参考价": d['referencePrice'], "网址": d['url'], "药店名称": d['shopName']}
         list.append(v)
     workbook = xlwt.Workbook()
@@ -26,6 +26,4 @@ def run(outputpath):
     print('导出成功')
 
 
-# run('./商品数据.xlsx')
-r = requests.get('https://www.111.com.cn/product/50094437.html')
-print(r.text)
+run('C:/Users/Administrator/Desktop/商品数据.xlsx')
